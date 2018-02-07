@@ -14,12 +14,18 @@ This is empty on purpose! Your code to build the resume will go here.
  	},
  	welcomeMessage: 'Hi! my name is John Doe! and this is my resume website.',
  	skills: ['Designing', 'Programming', 'Problem Solving'],
- 	biopic: '',
+ 	biopic: '../images/fry.jpg',
  	display: function(){
  		var n = HTMLheaderName.replace("%data%",name);
  		var r = HTMLheaderRole.replace("%data%",role);
  		$("div #header").append(r).append(n);
- 		HTMLcontactGeneric.replace("%contact%",);
+ 		$.each( contacts, function( key, value ) {
+ 			 var c =HTMLcontactGeneric.replace("%contact%",key).replace("%data%",value);
+ 			 $("div ul #topContacts").append(c);
+		});
+		var p = HTMLbioPic.replace("%data%",biopic);
+		var w = HTMLwelcomeMsg.replace("%data%",welcomeMessage);
+		$("div #header").next("div").append(p).append(w);
  	}
  }
 
