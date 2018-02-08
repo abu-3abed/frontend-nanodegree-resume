@@ -1,6 +1,8 @@
 /*
 This is empty on purpose! Your code to build the resume will go here.
  */
+$(document).ready(function($) {
+	
 
  var bio = {
  	name: 'John Doe',
@@ -14,18 +16,31 @@ This is empty on purpose! Your code to build the resume will go here.
  	},
  	welcomeMessage: 'Hi! my name is John Doe! and this is my resume website.',
  	skills: ['Designing', 'Programming', 'Problem Solving'],
- 	biopic: '../images/fry.jpg',
+ 	biopic: 'images/fry.jpg',
  	display: function(){
- 		var n = HTMLheaderName.replace("%data%",name);
- 		var r = HTMLheaderRole.replace("%data%",role);
- 		$("div #header").append(r).append(n);
- 		$.each( contacts, function( key, value ) {
+ 		// name and role
+ 		var n = HTMLheaderName.replace("%data%",bio.name);
+ 		var r = HTMLheaderRole.replace("%data%",bio.role);
+ 		$("div#header").append(n).append(r);
+
+ 		// contacts
+ 		$.each( bio.contacts, function( key, value ) {
  			 var c =HTMLcontactGeneric.replace("%contact%",key).replace("%data%",value);
- 			 $("div ul #topContacts").append(c);
+ 			 $("div ul#topContacts").append(c);
 		});
-		var p = HTMLbioPic.replace("%data%",biopic);
-		var w = HTMLwelcomeMsg.replace("%data%",welcomeMessage);
-		$("div #header").next("div").append(p).append(w);
+		$("div#header").append($("div ul#topContacts"));
+
+		// bio picture and welcome message
+		var p = HTMLbioPic.replace("%data%",bio.biopic);
+		var w = HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage);
+		$("div#header").append(p).append(w);
+
+		// skills
+		$("div#header").append(HTMLskillsStart);
+		var s = $("div#header").find('ul#skills');
+		$.each(bio.skills, function(index, val) {
+			s.append(HTMLskills.replace("%data%",val));
+		});
  	}
  }
 
@@ -33,7 +48,7 @@ var education = {
 	schools: [
 	{
 		name: 'Liberty University',
-		location: 'Berlin, Germany'
+		location: 'Berlin, Germany',
 		degree: 'Bachelor',
 		majors: ['CS'],
 		dates: '2003-2007',
@@ -47,7 +62,7 @@ var education = {
 		url: ''
 	}],
 	display: function () {
-		// body... 
+		
 	}
 
 }
@@ -56,12 +71,31 @@ var work = {
 	jobs: [{
 		employer: 'Planet Express',
 		title: 'Delivery Boy',
-		location: 'Brooklyn, NY',
 		dates: 'in progress',
+		location: 'Brooklyn, NY',
+		description: 'just like any menial job.'
+	},{
+		employer: 'Planet Express',
+		title: 'Delivery Boy',
+		dates: 'in progress',
+		location: 'Brooklyn, NY',
+		description: 'just like any menial job.'
+	},{
+		employer: 'Planet Express',
+		title: 'Delivery Boy',
+		dates: 'in progress',
+		location: 'Brooklyn, NY',
 		description: 'just like any menial job.'
 	}],
 	display: function(){
-
+		$.each(work.jobs, function(index, val) {
+			var ws = $(HTMLworkStart);
+			$(ws).append(HTMLworkEmployer.replace("%data%",val.employer) + HTMLworkTitle.replace("%data%",val.title));
+			$(ws).append(HTMLworkDates.replace("%data%",val.dates));
+			$(ws).append(HTMLworkLocation.replace("%data%",val.location));
+			$(ws).append(HTMLworkDescription.replace("%data%",val.description));
+			$('div#workExperience').append(ws);
+		});
 	}
 }
 
@@ -70,13 +104,15 @@ var projects = {
 		title:'Sample Project 1',
 		dates: '2013',
 		description: 'who moved my cheese?',
-		images: ['../images/197x148.gif',
-		'../images/197x148.gif']
+		images: ['images/197x148.gif',
+		'images/197x148.gif']
 	}],
 	display: function(){
-
+		$.each(projects.projects, function(index, val) {
+			 /* iterate through array or object */
+		});
 	}
 }
-	function display(htmlElement,callback,jqFunction){
-
-	}
+bio.display();
+work.display();
+});
