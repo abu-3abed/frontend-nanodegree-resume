@@ -61,8 +61,34 @@ var education = {
 		dates: '2018',
 		url: ''
 	}],
-	display: function () {
-		
+	display: function(){			
+
+		var ss = $(HTMLschoolStart);
+		// schools
+		$.each(education.schools, function(index, val) {
+			$(ss).append(HTMLschoolName.replace("%data%",val.name) + HTMLworkTitle.replace("%data%",val.degree));
+			$(ss).append(HTMLschoolDates.replace("%data%",val.dates));
+			$(ss).append(HTMLschoolLocation.replace("%data%",val.location));
+			$.each(val.majors, function(index, val) {
+				 $(ss).append(HTMLschoolMajor.replace("%data%",val));
+			});
+		});
+
+		$('div#education').append(ss);
+
+		// online courses
+		$('div#education').append(HTMLonlineClasses);
+
+		var ss = $(HTMLschoolStart);
+
+		$.each(education.onlineCourses, function(index, val) {
+			$(ss).append(HTMLonlineTitle.replace("%data%",val.title) + HTMLonlineSchool.replace("%data%",val.school));
+			$(ss).append(HTMLonlineDates.replace("%data%",val.dates));
+			$(ss).append(HTMLonlineURL.replace("%data%",val.url));
+		});
+
+		$('div#education').append(ss);
+
 	}
 
 }
@@ -106,13 +132,34 @@ var projects = {
 		description: 'who moved my cheese?',
 		images: ['images/197x148.gif',
 		'images/197x148.gif']
+	},{
+		title:'Sample Project 1',
+		dates: '2013',
+		description: 'who moved my cheese?',
+		images: ['images/197x148.gif',
+		'images/197x148.gif']
+	},{
+		title:'Sample Project 1',
+		dates: '2013',
+		description: 'who moved my cheese?',
+		images: ['images/197x148.gif',
+		'images/197x148.gif']
 	}],
 	display: function(){
 		$.each(projects.projects, function(index, val) {
-			 /* iterate through array or object */
+			var ps = $(HTMLprojectStart);
+			$(ps).append(HTMLprojectTitle.replace("%data%",val.title));
+			$(ps).append(HTMLprojectDates.replace("%data%",val.dates));
+			$(ps).append(HTMLprojectDescription.replace("%data%",val.description));
+			$.each(val.images, function(index, val) {
+				$(ps).append(HTMLprojectImage.replace("%data%",val));
+			});
+			$('div#projects').append(ps);
 		});
 	}
 }
 bio.display();
 work.display();
+projects.display();
+education.display();
 });
