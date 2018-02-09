@@ -62,6 +62,13 @@ var googleMap = '<div id="map"></div>';
 /*
 The Internationalize Names challenge found in the lesson Flow Control from JavaScript Basics requires you to create a function that will need this helper code to run. Don't delete! It hooks up your code to the button you'll be appending.
 */
+
+function inName(name){
+  firstName = name.substring(0, name.indexOf(" "));
+  lastName = name.substring(name.indexOf(" "), name.length);
+
+  return firstName.cap
+}
 $(document).ready(function() {
   $('button').click(function() {
     var $name = $('#name');
@@ -87,6 +94,7 @@ function logClicks(x,y) {
 
 $(document).click(function(loc) {
   // your code goes here!
+  logClicks(loc.pageX, loc.pageY);
 });
 
 
