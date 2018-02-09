@@ -162,5 +162,14 @@ bio.display();
 work.display();
 projects.display();
 education.display();
+
 $("div#mapDiv").before(internationalizeButton);
+
+$(document).ready(function() {
+  $('button#Internationalize').click(function() {
+    var $name = $('#name');
+    var iName = inName($name.text()) || function(){};
+    $name.html(iName);
+  });
+});
 });

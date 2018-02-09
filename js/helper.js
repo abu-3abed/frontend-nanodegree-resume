@@ -55,7 +55,7 @@ var HTMLonlineSchool = ' - %data%</a>';
 var HTMLonlineDates = '<div class="date-text">%data%</div>';
 var HTMLonlineURL = '<br><a href="#">%data%</a>';
 
-var internationalizeButton = '<button>Internationalize</button>';
+var internationalizeButton = '<button id="Internationalize">Internationalize</button>';
 var googleMap = '<div id="map"></div>';
 
 
@@ -67,15 +67,18 @@ function inName(name){
   firstName = name.substring(0, name.indexOf(" "));
   lastName = name.substring(name.indexOf(" "), name.length);
 
-  return firstName.cap
+  firstName = (firstName.substring(0, 1).toUpperCase()) + firstName.substring(1);
+  lastName = lastName.toUpperCase();
+
+  return firstName + lastName;
 }
-$(document).ready(function() {
-  $('button').click(function() {
-    var $name = $('#name');
-    var iName = inName($name.text()) || function(){};
-    $name.html(iName);
-  });
-});
+// $(document).ready(function() {
+//   $('button#Internationalize').click(function() {
+//     var $name = $('#name');
+//     var iName = inName($name.text()) || function(){};
+//     $name.html(iName);
+//   });
+// });
 
 /*
 The next few lines about clicks are for the Collecting Click Locations quiz in the lesson Flow Control from JavaScript Basics.
@@ -122,7 +125,7 @@ function initializeMap() {
   For the map to be displayed, the googleMap var must be
   appended to #mapDiv in resumeBuilder.js.
   */
-  map = new google.maps.Map(document.querySelector('#map'), mapOptions);
+  map = new google.maps.Map(document.querySelector('#mapDiv'), mapOptions);
 
 
   /*
@@ -247,11 +250,11 @@ Uncomment the code below when you're ready to implement a Google Map!
 */
 
 // Calls the initializeMap() function when the page loads
-//window.addEventListener('load', initializeMap);
+window.addEventListener('load', initializeMap);
 
 // Vanilla JS way to listen for resizing of the window
 // and adjust map bounds
-//window.addEventListener('resize', function(e) {
+window.addEventListener('resize', function(e) {
   //Make sure the map bounds get updated on page resize
-//  map.fitBounds(mapBounds);
-//});
+  map.fitBounds(mapBounds);
+});
