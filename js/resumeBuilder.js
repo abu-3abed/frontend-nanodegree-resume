@@ -39,7 +39,7 @@ $(document).ready(function($) {
                 s.append(HTMLskills.replace("%data%", val));
             });
         }
-    }
+    };
     var education = {
         schools: [{
             name: 'Liberty University',
@@ -69,7 +69,7 @@ $(document).ready(function($) {
             $('div#education').append(ss);
             // online courses
             $('div#education').append(HTMLonlineClasses);
-            var ss = $(HTMLschoolStart);
+            ss = $(HTMLschoolStart);
             $.each(education.onlineCourses, function(index, val) {
                 $(ss).append(HTMLonlineTitle.replace("%data%", val.title) + HTMLonlineSchool.replace("%data%", val.school));
                 $(ss).append(HTMLonlineDates.replace("%data%", val.dates));
@@ -77,7 +77,7 @@ $(document).ready(function($) {
             });
             $('div#education').append(ss);
         }
-    }
+    };
     var work = {
         jobs: [{
             employer: 'Planet Express',
@@ -108,7 +108,7 @@ $(document).ready(function($) {
                 $('div#workExperience').append(ws);
             });
         }
-    }
+    };
     var projects = {
         projects: [{
             title: 'Sample Project 1',
@@ -138,7 +138,7 @@ $(document).ready(function($) {
                 $('div#projects').append(ps);
             });
         }
-    }
+    };
     bio.display();
     work.display();
     projects.display();
