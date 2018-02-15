@@ -129,7 +129,7 @@ a {
 
 /* TODO: Replace with image later */
 #header {
-  background-color: #484848;
+  background-color: #1199c3;
 }
 
 .flex-box {
@@ -139,8 +139,12 @@ a {
   flex-wrap: wrap;
   justify-content: space-around;
   padding: 10px;
+  background-color: #1199c3;
 }
 
+.awesome-blue {
+  background-color: #1199c3; 
+}
 .flex-column {
   display: flex;
   flex-direction: column;
@@ -172,15 +176,16 @@ span {
 }
 
 #lets-connect {
+  padding-top: 5%;
   text-align: center;
 }
 
 /* Media queries to handle various device widths */
 
 @media only screen and (max-width: 1024px) {
-  #lets-connect {
-    margin-top: 5%;
-  }
+  /* #lets-connect {
+    padding-top: 5%;
+  } */
 }
 
 @media only screen and (max-width:900px) {
@@ -190,9 +195,9 @@ span {
 }
 
 @media only screen and (max-width: 750px) {
-  #lets-connect {
+ /*  #lets-connect {
     margin-top: 10%;
-  }
+  } */
   .biopic {
     width: 150px;
   }

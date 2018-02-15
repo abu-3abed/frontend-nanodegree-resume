@@ -20,12 +20,14 @@ $(document).ready(function($) {
             var n = HTMLheaderName.replace("%data%", bio.name);
             var r = HTMLheaderRole.replace("%data%", bio.role);
             $("div#header").append(n).append(r);
+            $("div#header span").addClass('white-text');
             // contacts
             $.each(bio.contacts, function(key, value) {
                 var c = HTMLcontactGeneric.replace("%contact%", key).replace("%data%", value);
                 $("div ul#topContacts").append(c);
             });
             $("div#header").append($("div ul#topContacts"));
+            $("div ul#footerContacts").append($("div ul#topContacts").clone(true, true));
             // bio picture and welcome message
             var p = HTMLbioPic.replace("%data%", bio.biopic);
             var w = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
